@@ -30,7 +30,7 @@ jobs:
         continue-on-error: false
         run: |
           cd SvtAv1Enc
-          docker build -t tgenc . && docker run tgenc
+          heroku local -f heroku.yml
 
       - name: Loop GitHub Hosted
         continue-on-error: true
