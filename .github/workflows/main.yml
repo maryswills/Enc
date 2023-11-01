@@ -6,7 +6,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout
@@ -23,14 +23,15 @@ jobs:
       - name: Clone Repository
         continue-on-error: true
         run: |
-          git clone -b main https://${{ secrets.GIT_NAME }}:${{ secrets.GIT_TOKEN }}@${{ secrets.BOT_REPO }} SvtAv1Enc
+          git clone -b main https://${{ secrets.GIT_NAME }}:${{ secrets.GIT_TOKEN }}@${{ secrets.BOT_REPO }} tgenc
 
-      - name: Run Bot
+      - name: Running Code
         timeout-minutes: 270
         continue-on-error: false
         run: |
-          cd SvtAv1Enc
-          heroku local -f heroku.yml
+          cd tgenc
+          docker build . -t tgenc
+          docker run tgenc
 
       - name: Loop GitHub Hosted
         continue-on-error: true
