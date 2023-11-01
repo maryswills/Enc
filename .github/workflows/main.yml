@@ -23,7 +23,7 @@ jobs:
       - name: Clone Repository
         continue-on-error: true
         run: |
-          git clone -b main https://${{ secrets.GIT_NAME }}:${{ secrets.GIT_TOKEN }}@${{ secrets.BOT_REPO }} SvtAv1Enc
+          git clone -b tgenc-1 https://${{ secrets.GIT_NAME }}:${{ secrets.GIT_TOKEN }}@${{ secrets.BOT_REPO }} SvtAv1Enc
 
       - name: Run Bot
         timeout-minutes: 270
