@@ -28,8 +28,10 @@ jobs:
 
       - name: Wait for Docker daemon
         run: |
-          docker version
           sleep 10
+
+      - name: Check Docker daemon
+        run: docker version
 
       - name: Initialize Git
         continue-on-error: true
