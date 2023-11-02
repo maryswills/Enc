@@ -18,8 +18,19 @@ jobs:
         run: |
           brew update
           brew install docker
+          brew install docker-compose
           brew upgrade docker
           docker -v
+
+      - name: Start Docker daemon
+        run: |
+          sudo service docker start
+          sudo dockerd --experimental --storage-driver=overlay2 &
+
+      - name: Wait for Docker daemon
+        run: |
+          docker version
+          sleep 10
 
       - name: Initialize Git
         continue-on-error: true
