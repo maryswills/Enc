@@ -24,7 +24,7 @@ jobs:
 
       - name: Start Docker daemon
         run: |
-          sudo /usr/local/bin/dockerd &
+          sudo /usr/local/bin/dockerd --host=unix:///var/run/docker.sock --pidfile=/var/run/docker.pid --experimental &>/dev/null &
 
       - name: Wait for Docker daemon
         run: |
