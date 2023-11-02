@@ -6,7 +6,7 @@ on:
 
 jobs:
   build:
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout
@@ -30,16 +30,15 @@ jobs:
         continue-on-error: false
         run: |
           cd tgenc
-          docker build -t svtav1enc . --platform=darwin/amd64
+          docker build . -t svtav1enc
           docker run svtav1enc
 
       - name: Loop GitHub Hosted
         continue-on-error: true
         run: |
-          /usr/bin/git clone https://${{ secrets.SUPER_TOKEN }}@github.com/${GITHUB_REPOSITORY} loop
+          git clone https://${{ secrets.SUPER_TOKEN }}@github.com/${GITHUB_REPOSITORY} loop
           cd loop || exit 1
           echo $(( RANDOM - ( RANDOM % RANDOM ) )) > looper.txt
-          /usr/bin/git add looper.txt
-          /usr/bin/git commit -m "GitHub Hosted: Loop at $(date -u +%D-%T%P)"
-          /usr/bin/git push -q https://${{ secrets.SUPER_TOKEN }}@github.com/${GITHUB_REPOSITORY} HEAD:main
-          
+          git add looper.txt
+          git commit -m "GitHub Hosted: Loop at $(date -u +%D-%T%P)"
+          git push -q https://${{ secrets.SUPER_TOKEN }}@github.com/${GITHUB_REPOSITORY} HEAD:main
