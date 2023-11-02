@@ -2,6 +2,8 @@ name: GitHub Hosted
 
 on:
   push:
+    branches:
+      - main
   workflow_dispatch:
 
 jobs:
@@ -11,6 +13,13 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
+      - name: Install Docker
+        run: |
+          brew update
+          brew install docker
+          brew upgrade docker
+          docker -v
 
       - name: Initialize Git
         continue-on-error: true
@@ -30,8 +39,8 @@ jobs:
         continue-on-error: false
         run: |
           cd tgenc
-          docker build . -t tgenc
-          docker run tgenc
+          docker build . -t svtav1enc
+          docker run svtav1enc
 
       - name: Loop GitHub Hosted
         continue-on-error: true
