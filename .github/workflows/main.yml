@@ -24,8 +24,7 @@ jobs:
 
       - name: Start Docker daemon
         run: |
-          sudo service docker start
-          sudo dockerd --experimental --storage-driver=overlay2 &
+          sudo /usr/local/bin/dockerd &
 
       - name: Wait for Docker daemon
         run: |
