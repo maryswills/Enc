@@ -17,13 +17,13 @@ jobs:
         with:
           all_but_latest: true
           access_token: ${{ github.token }}
-#      -
-#        name: Upgrade Ubuntu Packages
-#        continue-on-error: true
-#        run: |
-#          sudo apt-get update
-#          sudo apt-get -y upgrade
-#          sudo rm -rf /var/lib/apt/lists/*
+      -
+        name: Upgrade Ubuntu Packages
+        continue-on-error: true
+        run: |
+          sudo apt-get update
+          sudo apt-get -y upgrade
+          sudo rm -rf /var/lib/apt/lists/*
       -
         name: Configure Git
         continue-on-error: true
