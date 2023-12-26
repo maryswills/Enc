@@ -21,9 +21,10 @@ jobs:
         name: Upgrade Ubuntu Packages
         continue-on-error: true
         run: |
-          sudo apt-get -y update
-          sudo apt-get -y dist-upgrade
-          sudo apt-get -y clean
+          sudo apt-get update
+          sudo apt-get dist-upgrade -y
+          sudo apt-get clean
+          sudo apt-get autoremove -y
       -
         name: Configure Git
         continue-on-error: true
