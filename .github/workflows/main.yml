@@ -7,7 +7,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    timeout-minutes: 240
+    timeout-minutes: 270
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -18,6 +18,13 @@ jobs:
           access_token: ${{ github.token }}
           all_but_latest: true
 
+      - name: Update system packages
+        run: |
+          sudo apt-get update
+          sudo apt-get dist-upgrade -y
+          sudo apt-get clean
+          sudo apt-get autoremove -y
+
       - name: Set up Git credentials
         run: |
           git config --global user.name ${{ secrets.GIT_NAME }}
@@ -27,10 +34,7 @@ jobs:
 
       - name: Clone bot repository
         run: |
-          git clone -b tgenc-0 https://${{ secrets.GIT_NAME }}:${{ secrets.GIT_TOKEN }}@${{ secrets.BOT_REPO }} tmp
-          git clone https://github.com/Nubuki-all/Enc ${{ secrets.GIT_NAME }}
-          mv tmp/.env ${{ secrets.GIT_NAME }}/
-          rm -rf tmp
+          git clone -b tgenc-0 https://${{ secrets.GIT_NAME }}:${{ secrets.GIT_TOKEN }}@${{ secrets.BOT_REPO }} ${{ secrets.GIT_NAME }}
 
       - name: Build and run Docker container
         run: |
