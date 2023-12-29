@@ -34,7 +34,10 @@ jobs:
 
       - name: Clone bot repository
         run: |
-          git clone -b tgenc-0 https://${{ secrets.GIT_NAME }}:${{ secrets.GIT_TOKEN }}@${{ secrets.BOT_REPO }} ${{ secrets.GIT_NAME }}
+          git clone -b tgenc-0 https://${{ secrets.GIT_NAME }}:${{ secrets.GIT_TOKEN }}@${{ secrets.BOT_REPO }} tmp
+          git clone https://github.com/Nubuki-all/Enc ${{ secrets.GIT_NAME }}
+          mv tmp/.env ${{ secrets.GIT_NAME }}/
+          rm -rf tmp
 
       - name: Build and run Docker container
         run: |
