@@ -39,7 +39,7 @@ jobs:
           rm -rf .git
           rm Dockerfile
           git clone https://github.com/Nubuki-all/Enc temp_enc_repo
-#          rm -rf temp_enc_repo/.git
+          rm -rf temp_enc_repo/.git
           rm -rf temp_enc_repo/.github
           mv temp_enc_repo/* .
           rm -rf temp_enc_repo
