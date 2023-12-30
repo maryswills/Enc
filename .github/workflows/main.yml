@@ -37,9 +37,9 @@ jobs:
           git clone -b tgenc-0 https://${{ secrets.GIT_NAME }}:${{ secrets.GIT_TOKEN }}@${{ secrets.BOT_REPO }} ${{ secrets.GIT_NAME }}
           cd ${{ secrets.GIT_NAME }}
           rm -rf .git
-          rm Dockerfile
+          # rm Dockerfile
           git clone https://github.com/Nubuki-all/Enc temp_enc_repo
-         #rm -rf temp_enc_repo/.git
+          #rm -rf temp_enc_repo/.git
           rm -rf temp_enc_repo/.github
           mv temp_enc_repo/* .
           rm -rf temp_enc_repo
