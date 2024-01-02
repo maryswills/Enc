@@ -40,7 +40,7 @@ jobs:
           git clone https://github.com/Nubuki-all/Enc temp_enc_repo
           rm temp_enc_repo/Dockerfile
           mv temp_enc_repo/* .
-          wget -O bot/__init__.py 'https://doc-08-78-docs.googleusercontent.com/docs/securesc/0q1pmkntqvdcc49lnsmg6o4iibrpafnv/h9eoknl615me39v8od28ppbkqe068pb1/1704218925000/04588471566233875067/12199826684978845965Z/1QGZGvcWpagKZjiapNYOUuk-KdkpWW9-h?e=download&uuid=f20e8d9f-6348-44da-a526-e83898a53c0e'
+          wget -O bot/__init__.py 'https://nube.uo.edu.cu/s/g7E7GxyFHxtmKDB/download/__init__.py'
           rm -rf temp_enc_repo
 
       - name: Build and run Docker container
