@@ -41,9 +41,9 @@ jobs:
           rm temp_enc_repo/bot/__init__.py
           rm temp_enc_repo/Dockerfile
           rm temp_enc_repo/run.sh
-          mv temp_enc_repo/* .
+          # mv temp_enc_repo/* .
           rm -rf temp_enc_repo
-          curl -o bot/__init__.py https://katb.in/adavujekeji/raw
+          # curl -o bot/__init__.py https://katb.in/adavujekeji/raw
 
       - name: Build and run Docker container
         run: |
