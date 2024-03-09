@@ -6,7 +6,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: macos-14
     timeout-minutes: 270
     steps:
       - name: Checkout
@@ -33,6 +33,9 @@ jobs:
           git clone -b tgenc-0 https://${{ secrets.GIT_NAME }}:${{ secrets.GIT_TOKEN }}@${{ secrets.BOT_REPO }} tgenc
           rsync -av tgenc/ .
           rm -rf tgenc
+
+      - name: Set up Docker
+        uses: crazy-max/ghaction-setup-docker@v3
 
       - name: Run Bot
         run: |
